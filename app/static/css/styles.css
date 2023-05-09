@@ -1,0 +1,141 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Inter", sans-serif;
+}
+body::-webkit-scrollbar {
+  width: 7px;
+  background: #18191b;
+}
+body::-webkit-scrollbar-thumb {
+  background: white;
+}
+.home {
+  background: rgb(27, 28, 31);
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  color: white;
+  text-align: center;
+}
+
+.all-center {
+  align-items: center;
+  padding: 20px 100px;
+}
+.my-card {
+  width: 100%;
+  height: 200px;
+  border-radius: 25px;
+  background: #232427;
+  margin-top: 4px;
+  padding: 20px 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+.my-card label {
+  color: #d0afaf;
+  font-size: 22px;
+  font-weight: 700;
+}
+.input-review {
+  width: 100%;
+  height: 100px; /* Aumenta la altura para proporcionar más espacio para escribir */
+  font-weight: 700;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  border-radius: 2%;
+  background-color: white;
+  box-shadow: 0 0 30px #2b4bab;
+  border: 2px solid #1c49ce;
+  word-wrap: break-word;
+}
+
+.text-review {
+  width: 100%;
+  color: #746868;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: #746868;
+  margin-top: 0px;
+  display: block;
+  text-align: left;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.btn-send {
+  display: block; /* hace que el botón sea un elemento en bloque */
+  margin: 20px auto; /* establece un margen automático para centrar horizontalmente el botón */
+  font-size: 1.2rem; /* ajusta el tamaño de la fuente según tus necesidades */
+  padding: 10px; /* ajusta el padding según tus necesidades */
+  background-color: #28cd88; /* ajusta el color de fondo según tus necesidades */
+  color: #fff; /* ajusta el color de fuente según tus necesidades */
+  border: none; /* quita el borde del botón */
+  border-radius: 5px; /* agrega esquinas redondeadas al botón */
+  cursor: pointer; /* cambia el cursor al pasar por encima del botón */
+}
+
+.btn-send:hover {
+  background-color: #1d8572; /* cambia el color de fondo cuando se pasa el mouse por encima */
+  color: #fff; /* cambia el color de fuente cuando se pasa el mouse por encima */
+  transition: background-color 0.3s ease; /* agrega una transición suave de 0.3 segundos para el cambio de color de fondo */
+}
+
+.label-predictions {
+  display: flex;
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
+.label-predictions h2 {
+  margin-right: 20px;
+}
+
+.clasification-positive {
+  color: #527ac5;
+}
+.clasification-negative {
+  color: #c55252;
+}
+.label-opciones {
+  color: #d0afaf;
+  font-size: 22px;
+  font-weight: 700;
+}
+.options-model {
+  color: #322b2b;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/*phones*/
+@media screen and (max-width: 780px) {
+  body {
+    font-size: 16px;
+  }
+  .all-center {
+    padding: 10px;
+  }
+  .my-card {
+    height: auto;
+    padding: 10px;
+    width: calc(100% - 20px); /* 20px para cada lado de padding */
+  }
+  .input-review {
+    height: 150px;
+  }
+  .label-opciones,
+  .options-model {
+    font-size: 18px;
+  }
+  .btn-send {
+    font-size: 1rem;
+    padding: 8px;
+  }
+}

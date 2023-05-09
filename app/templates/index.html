@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <title>Clasification of reviews</title>
+  </head>
+  <body class="home">
+    <h1 class="title">Clasification of Reviews about Movies IMBD</h1>
+    <div class="all-center">
+        <form
+      method="POST"
+      action="{{ url_for('clasification') }}"
+      id="nombre-container"
+        >
+        <!-- with others models -->
+        <label class="label-opciones" for="opciones">Select a model:</label>
+        <select class="options-model" id="opciones" name="opciones">
+        <option value="opcion4">Model 4</option>
+        <option value="opcion1">Model 1</option>
+        <option value="opcion2">Model 2</option>
+        <option value="opcion3">Model 3</option>
+        
+        </select>
+        <!-- with others models -->
+    
+    
+      <div class="my-card">
+        <label for="review">Enter your review:</label>
+
+        <textarea
+          type="text"
+          class="input-review"
+          id="review"
+          name="review"
+          required
+          inputmode="text"
+          value="{{ review }}">
+        </textarea>
+        <input class="btn-send" type="submit" value="Send" />
+      </div>
+    </form>
+
+    
+    {% if user_review %}
+    <div class="my-card">
+        <label for="your-review">Your review:</label>
+      <h2 class="text-review">{{ user_review }}</h2>
+    </div>
+    {% endif %} 
+    {% if mensaje and prediction %}
+    <div class="label-predictions">
+    <h2 id="clasification-label">Clasification :  </h2>
+    {% if mensaje ==  "Positive review!" %}
+    <h2 id="mensaje" class="clasification-positive">{{ mensaje }}</h2>
+    {% endif %}
+    {% if mensaje ==  "Negative review." %}
+    <h2 id="mensaje" class="clasification-negative">{{ mensaje }}</h2>
+    {% endif %}
+    </div>
+    <div class="label-predictions">
+    <h2 id="prediction-label">Prediction :   </h2>
+    <h2 id="prediction" >{{ prediction}}</h2>
+    </div>
+    {% endif %}
+</div>
+  </body>
+</html>
