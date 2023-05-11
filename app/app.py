@@ -1,7 +1,13 @@
+#--libaries--models-4-and-1--
 from flask import Flask, render_template, request
 from tensorflow.keras.models import load_model
 from tensorflow.keras.datasets import imdb
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+#--libaries--model-3-
+from sklearn.svm import SVC
+import joblib
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 app = Flask(__name__)
 
@@ -19,12 +25,40 @@ def clasification():
         if option_selected == "opcion4":
              # Cargar el modelo guardado
              model = load_model("app\modelo4.h5")
+             maxlen = 256
         elif option_selected == "opcion3":
-             model = load_model("app\modelo3.h5")
+             
+                    # Cargar el modelo SVM
+            model = joblib.load("app/modelo_svm.pkl")
+
+            # Cargar el vectorizador TF-IDF
+            vectorizer = joblib.load("app/vectorizer.pkl")
+
+            # Obtener la entrada del usuario
+            user_review = request.form['review']
+
+            # Preprocesar la entrada del usuario utilizando el vectorizador TF-IDF
+            user_tfidf = vectorizer.transform([user_review])
+
+            # Realizar la clasificación utilizando el modelo
+            prediction = model.predict(user_tfidf)
+
+            if prediction == 1:
+                print("Positive review!")
+                print(f'Prediction: {prediction}')
+                mensaje = "Positive review!"
+                return render_template("index.html", prediction=prediction, mensaje=mensaje, user_review=user_review)
+            else:
+                print("Negative review!")
+                mensaje = "Negative review."
+                return render_template("index.html", prediction=prediction, mensaje=mensaje, user_review=user_review)
+
+
         elif option_selected == "opcion2":
              model = load_model("app\modelo2.h5")
         else:
              model = load_model("app\modelo1.h5")
+             maxlen = 500
         #--------------------------- 
        # Cargar el modelo guardado
        # model = load_model("app\modelo.h5")
@@ -42,7 +76,7 @@ def clasification():
         ]
 
         # Pad the user's tokens to a maximum length of 256 words
-        maxlen = 256
+        
         user_padded = pad_sequences([user_tokens], maxlen=maxlen)
 
         # Use the trained model to predict the sentiment of the user's review
