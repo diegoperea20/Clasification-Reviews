@@ -18,13 +18,13 @@ def clasification():
         option_selected = request.form['opciones']
         if option_selected == "opcion4":
              # Cargar el modelo guardado
-             model = load_model("app\modelo.h5")
+             model = load_model("app\modelo4.h5")
         elif option_selected == "opcion3":
              model = load_model("app\modelo3.h5")
         elif option_selected == "opcion2":
              model = load_model("app\modelo2.h5")
         else:
-             model = load_model("app\modelou.h5")
+             model = load_model("app\modelo1.h5")
         #--------------------------- 
        # Cargar el modelo guardado
        # model = load_model("app\modelo.h5")
