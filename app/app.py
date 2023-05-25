@@ -29,10 +29,10 @@ def clasification():
         elif option_selected == "opcion3":
              
                     # Cargar el modelo SVM
-            model = joblib.load("app/modelo_svm.pkl")
+            model = joblib.load("app/model3/modelo_svm.pkl")
 
             # Cargar el vectorizador TF-IDF
-            vectorizer = joblib.load("app/vectorizer.pkl")
+            vectorizer = joblib.load("app/model3/vectorizer.pkl")
 
             # Obtener la entrada del usuario
             user_review = request.form['review']
